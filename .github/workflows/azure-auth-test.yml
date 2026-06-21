@@ -1,4 +1,4 @@
-name: Test Azure OIDC Authentication
+name: Test Azure OIDC Login
 
 on:
   workflow_dispatch:
@@ -12,21 +12,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Login to Azure using OIDC
+      - name: Login to Azure with OIDC
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          client-id: "0733e9b4-31ac-4030-acb1-d5c2038a93f7"
+          tenant-id: "a1acc4b2-89d7-49ea-a303-061d365a8671"
+          subscription-id: "56b5b95f-6236-4a39-96c1-8a7dc124eaa1"
 
-      - name: Verify Azure login
+      - name: Verify login
         run: |
           az account show --output table
 
-      - name: Check resource group
+      - name: Check resource group access
         run: |
           az group show \
             --name calss-9am \
