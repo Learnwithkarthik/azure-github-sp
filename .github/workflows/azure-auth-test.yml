@@ -20,5 +20,5 @@ jobs:
       - name: Check Resource Group
         run: |
           az group show \
-            --name github-actions-demo-rg \
+            --name calss-9am \
             --output table
